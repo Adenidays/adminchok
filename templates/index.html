@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .thebody {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .block {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 4px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .block p {
+            margin: 0;
+        }
+
+        .block a {
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .block a:hover {
+            background-color: #0d8bf0;
+        }
+
+        .block form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .block form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .block form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <h1>Products:</h1>
+    </div>
+    <div class="thebody">
+        {% for product in products %}
+        <div class="block">
+            <p>{{ product }}</p>
+            <p><a href="{{ product.get_absolute_url }}">Product Detail</a></p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <button name="buy" value="{{ product.pk }}">Buy</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

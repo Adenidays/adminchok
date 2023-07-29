@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .head {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .head a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid white;
+            border-radius: 4px;
+        }
+
+        .head a:hover {
+            background-color: white;
+            color: #333;
+        }
+
+        .thebody {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .block {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 4px;
+            width: 300px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .block p {
+            margin: 0;
+        }
+
+        .block form {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .block form button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .block form button:hover {
+            background-color: #d32f2f;
+        }
+
+        .block form a {
+            margin-left: 10px;
+            color: #2196F3;
+            text-decoration: none;
+        }
+
+        .block form a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">
+        <p>
+            <a href="add_product" class="add">Add Product</a>
+        </p>
+    </div>
+    <div class="thebody">
+        {% for product in products %}
+        <div class="block">
+            <p>{{ product }}</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="inp" value="{{product.pk}}">
+                <button type="submit" name="action">Delete</button>
+                <p><a href="edit_product{{product.get_absolute_url}}" class="edit">Edit</a></p>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

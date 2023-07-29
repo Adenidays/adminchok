@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .thebody {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .block {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .block p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .block a {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .block a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="thebody">
+        <div class="block">
+            <p><a href="http://127.0.0.1:8000/">Home</a></p>
+            <p>{{ product.name }}:</p>
+            <p>Price: {{ product.price }}</p>
+            <p>Category: {{ product.category }}</p>
+            <p>Date: {{ product.date }}</p>
+        </div>
+    </div>
+</body>
+
+</html>
